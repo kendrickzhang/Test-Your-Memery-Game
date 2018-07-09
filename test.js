@@ -1,62 +1,3 @@
-// function modal() {
-//     const modal = document.getElementById('startScreen');
-//     const btn = document.getElementById('openModal');
-//     const close = document.getElementById('modalClose');
-
-//     btn.onclick = function() {
-//         modal.style.display = "block";
-//     }
-
-//     close.onclick = function() {
-//         modal.style.display = "none";
-//     }
-// }
-// modal();
-
-// const wdiInstructors = [
-//     {name: 'A-aron', image: 'assets/a-aron.png'},
-//     {name: 'Drake', image: 'assets/drake.png'},
-//     {name: 'Jason', image: 'assets/jason.png'},
-//     {name: 'JohnM', image: 'assets/jm.png'},
-//     {name: 'JZ', image: 'assets/jz.png'},
-// ];
-
-// const eastTeams = [
-//     {name: 'Bucks', img: 'assets/bucks.png',},
-//     {name: 'Bulls', img: 'assets/bulls.png',},
-//     {name: 'Cavaliers', img: 'assets/cavaliers.png',},
-//     {name: 'Celtics', img: 'assets/celtics.png',},
-//     {name: 'Hawks', img: 'assets/hawks.png',},
-//     {name: 'Heat', img: 'assets/heat.png',},
-//     {name: 'Hornets', img: 'assets/hornets.png',},
-//     {name: 'Knicks', img: 'assets/knicks.png',},
-//     {name: 'Magic', img: 'assets/magic.png',},
-//     {name: 'Nets', img: 'assets/nets.png',},
-//     {name: 'Pacers', img: 'assets/pacers.png',},
-//     {name: 'Pistons', img: 'assets/pistons.png',},
-//     {name: 'Raptors', img: 'assets/raptors.png',},
-//     {name: 'Sixers', img: 'assets/sixers.png',},
-//     {name: 'Wizards', img: 'assets/wizards.png',},
-// ];
-
-// const westTeams = [
-//     {name: 'Blazers', img: 'assets/blazers.png',},
-//     {name: 'Clippers', img: 'assets/clippers.png',},
-//     {name: 'Grizzlies', img: 'assets/grizzlies.png',},
-//     {name: 'Jazz', img: 'assets/jazz.png',},
-//     {name: 'Kings', img: 'assets/kings.png',},
-//     {name: 'Lakers', img: 'assets/lakers.png',},
-//     {name: 'Mavericks', img: 'assets/mavericks.png',},
-//     {name: 'Nuggets', img: 'assets/nuggets.png',},
-//     {name: 'Pelicans', img: 'assets/pelicans.png',},
-//     {name: 'Rockets', img: 'assets/rockets.png',},
-//     {name: 'Spurs', img: 'assets/spurs.png',},
-//     {name: 'Suns', img: 'assets/suns.png',},
-//     {name: 'Thunder', img: 'assets/Thunder.png',},
-//     {name: 'Timberwolves', img: 'assets/timberwolves.png',},
-//     {name: 'Warriors', img: 'assets/warriors.png',},
-// ];
-
 //array of memes
 const memes = [
     {name: 'kim', image: 'assets/kimye.png', type: 'kimye'},
@@ -79,7 +20,7 @@ const memes = [
     {name: 'cardiB', image: 'assets/cardib.jpg', type: 'oww'},
     {name: 'fuel', image: 'assets/fuel.jpg', type: 'coding'},
     {name: 'life', image: 'assets/life.jpg', type: 'coding'},
-];
+]
 
 //select container and card
 const grid = document.querySelector("#gameGrid");
@@ -88,14 +29,13 @@ const tile = document.querySelector(".card");
 const images = document.querySelectorAll("img");
 const allTiles = document.querySelectorAll(".card");
 
+//shuffle array
+const newGame = shuffle(memes);
 //reset moves
 let firstClick = "null";
 let secondClick = "null";
 let checkClicks = [];
 let keepCount = 0;
-
-//shuffle array
-const newGame = shuffle(memes);
 
 function startGame() {
     //create the tiless
@@ -115,8 +55,10 @@ function startGame() {
             else {
                 return ;   
             }
+
         });
         grid.appendChild(tiles);
+
     }
 }
 startGame();
@@ -135,6 +77,7 @@ function handleClicks(e) {
     let lastTile = checkClicks[0];
     //loop through two clicks
     while (checkClicks.length < 2 && stop === false) {
+        console.log('looping');
         //first click
         if (checkClicks.length === 1) {
             e.classList.add('show');
@@ -159,9 +102,9 @@ function checkMatch(a, b) {
     if (a.dataset.name === b.dataset.name) {
         match = true;
         console.log(match);
-        checkClicks = [];
         a.classList.add('matched');
         b.classList.add('matched');
+        checkClicks = [];
         checkWin();
     }
     else {

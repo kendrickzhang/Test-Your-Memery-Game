@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis|Wendy+One');
+
+/* font-family: 'Wendy One', sans-serif;
+font-family: 'Dosis', sans-serif; */
+
+*, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* Header properties */
+h1#gameTitle {
+    /* border: 2px solid yellow; */
+    color: white;
+    font-family: 'Wendy One', sans-serif;
+    font-size: 32pt;
+    text-align: center;
+
+}
+div#gameMessage {
+    /* border: 2px solid red; */
+    font-size: 28pt;
+    color: yellow;
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    margin: 10px auto;
+
+}
+div#gameTimer {
+    /* border: 2px solid red; */
+    font-size: 28pt;
+    color: yellow;
+    font-family: 'Dosis', sans-serif;
+    text-align: center;
+    margin: 10px auto;
+}
+
+/* Grid and tile properties */
+#gameGrid {
+    height: 530px;
+    width: 810px;
+    border: 10px solid pink;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 50px auto;
+}
+
+.tiles {
+    height: 120px;
+    width: 150px;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 1);
+}
+.tiles:hover {
+    border: 2px solid royalblue;
+}
+
+img {
+    height: 120px;
+    width: 150px;
+}
+img.imgOff {
+    opacity: 0;
+}
+
+
+.hide {
+    animation: reset 0.6s linear 0.15s forwards;
+    transition: 0.15s;
+}
+@keyframes reset {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+.show {
+    animation: reveal 0.6s linear 0.15s forwards;
+    transition: 0.15s;
+}
+@keyframes reveal {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(180deg);
+        opacity: 1;
+    }
+}
+
+.matched {
+    border: 2px solid red;
+    transition: 1s;
+}
+
+
+/* Start Screen Modals */
+button#openModal {
+    width: 100px;
+    height: 70px;
+    border: 2px solid white;
+    color: white;
+    background-color: black;
+    text-align: center;
+}
+div#startScreen {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+div.startModalContent {
+    margin: 100px auto;
+    width: 70%;
+    background-color: white;
+    border: 2px solid yellow;
+}
+span#modalClose {
+    color: yellow;
+    font-size: 18pt;
+    font-weight: bold;
+    right: 10px;
+}
+span#modalClose:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
