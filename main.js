@@ -159,14 +159,17 @@ function checkMatch(a, b) {
     if (a.dataset.name === b.dataset.name) {
         match = true;
         console.log(match);
-        checkClicks = [];
-        a.classList.add('matched');
-        b.classList.add('matched');
+        setTimeout(proceed, 1500);
+        function proceed() {
+            checkClicks = [];
+            a.classList.add('matched');
+            b.classList.add('matched');
+        }
         checkWin();
     }
     else {
         console.log(match);
-        setTimeout(flipBack, 1000);
+        setTimeout(flipBack, 1500);
         function flipBack() {
             a.classList.remove('show');
             a.classList.add('hide');
