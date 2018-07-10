@@ -3,7 +3,7 @@
 /* font-family: 'Wendy One', sans-serif;
 font-family: 'Dosis', sans-serif; */
 
-*, body {
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -11,50 +11,83 @@ font-family: 'Dosis', sans-serif; */
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
 }
+ul, li {
+    list-style-type: none;
+    text-align: left;
+}
 
-/* Header properties */
-h1#gameTitle {
-    /* border: 2px solid yellow; */
-    color: white;
+div#view {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 30% 10% 60%;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* left sidebar properties */
+div#title {
+    height: 100%;
+    width: 100%;
+    grid-row: 1;
+    grid-column: 1;
+}
+p.gameTitle {
+    color: pink;
     font-family: 'Wendy One', sans-serif;
-    font-size: 32pt;
+    font-size: 40pt;
     text-align: center;
-
+    margin: 30px auto;
 }
-div#gameMessage {
-    /* border: 2px solid red; */
-    font-size: 28pt;
-    color: yellow;
+div#message {
+    height: 100%;
+    width: 100%;
+    grid-row: 3;
+    grid-column: 1;
+}
+.gameMessage {
+    font-size: 14pt;
+    color: white;
     font-family: 'Dosis', sans-serif;
-    text-align: center;
-    margin: 10px auto;
-
+    margin: 100px auto;
 }
-div#gameTimer {
-    /* border: 2px solid red; */
-    font-size: 28pt;
-    color: yellow;
+div#timer {
+    height: 100%;
+    width: 100%;
+    grid-row: 2;
+    grid-column: 1;
+}
+.gameTimer {
+    font-size: 22pt;
+    color: royalblue;
     font-family: 'Dosis', sans-serif;
     text-align: center;
     margin: 10px auto;
 }
 
 /* Grid and tile properties */
+#display {
+    height: 100%;
+    width: 100%;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 2;
+
+}
 #gameGrid {
-    height: 530px;
-    width: 810px;
-    border: 10px solid pink;
+    height: 700px;
+    width: 960px;
+    /* border: 4px solid pink; */
     display: flex;
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-evenly;
-    margin: 50px auto;
+    margin: 10px auto 10px auto;
 }
 
 .tiles {
-    height: 120px;
-    width: 150px;
-    border: 2px solid white;
+    height: 130px;
+    width: 230px;
+    border: 2px solid pink;
     background-color: rgba(0, 0, 0, 1);
 }
 .tiles:hover {
@@ -62,8 +95,8 @@ div#gameTimer {
 }
 
 img {
-    height: 120px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
 }
 img.imgOff {
     opacity: 0;
@@ -98,49 +131,153 @@ img.imgOff {
 }
 
 .matched {
-    border: 2px solid red;
-    transition: 1s;
+    animation: match 1.2s linear 0.5s forwards;
+    opacity: 1;
+}
+@keyframes match {
+    from {
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(360deg);
+    }
 }
 
 
 /* Start Screen Modals */
-button#openModal {
-    width: 100px;
-    height: 70px;
-    border: 2px solid white;
-    color: white;
-    background-color: black;
-    text-align: center;
-}
-div#startScreen {
+.startScreen {
     display: none;
     position: fixed;
     height: 100%;
     width: 100%;
-    z-index: 1;
-    left: 0;
     top: 0;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.85);
 }
-div.startModalContent {
-    margin: 100px auto;
-    width: 70%;
-    background-color: white;
-    border: 2px solid yellow;
+.startScreenContent {
+    margin: 50px auto 50px auto;
+    width: 85%;
+    height: 85%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 10px solid pink;
 }
-span#modalClose {
-    color: yellow;
-    font-size: 18pt;
-    font-weight: bold;
-    right: 10px;
-}
-span#modalClose:hover {
+.modalText {
     color: black;
-    text-decoration: none;
-    cursor: pointer;
+    font-size: 28pt;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Dosis', sans-serif;
+    margin: 50px auto;
+}
+#hideModal {
+    height: 70px;
+    width: 190px;
+    text-align: center;
+    font-size: 22pt;
+    font-family: 'Wendy One', sans-serif;
+    border: 2px solid pink;
+}
+#hideModal:focus {
+    outline: 0;
+}
+#hideModal:hover {
+    background-color: pink;
+    border: 6px solid black;
+    transition: 1s;
 }
 
+/* Lose Screen Modals */
+.loseScreen {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+.loseScreenContent {
+    margin: 50px auto 50px auto;
+    width: 85%;
+    height: 85%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 10px solid pink;
+}
+.loseModalText {
+    color: black;
+    font-size: 28pt;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Dosis', sans-serif;
+    margin: 50px auto;
+}
+#hideLoseModal {
+    height: 70px;
+    width: 190px;
+    text-align: center;
+    font-size: 22pt;
+    font-family: 'Wendy One', sans-serif;
+    border: 2px solid pink;
+}
+#hideLoseModal:focus {
+    outline: 0;
+}
+#hideLoseModal:hover {
+    background-color: pink;
+    border: 6px solid black;
+    transition: 1s;
+}
 
-
-
+/* Lose Screen Modals */
+.winScreen {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+.winScreenContent {
+    margin: 50px auto 50px auto;
+    width: 85%;
+    height: 85%;
+    background-color: rgba(255, 255, 255, 1);
+    border: 10px solid pink;
+}
+.winModalText {
+    color: black;
+    font-size: 28pt;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Dosis', sans-serif;
+    margin: 50px auto;
+}
+#hideWinModal {
+    height: 70px;
+    width: 190px;
+    text-align: center;
+    font-size: 22pt;
+    font-family: 'Wendy One', sans-serif;
+    border: 2px solid pink;
+}
+#hideWinModal:focus {
+    outline: 0;
+}
+#hideWinModal:hover {
+    background-color: pink;
+    border: 6px solid black;
+    transition: 1s;
+}

@@ -1,62 +1,3 @@
-// function modal() {
-//     const modal = document.getElementById('startScreen');
-//     const btn = document.getElementById('openModal');
-//     const close = document.getElementById('modalClose');
-
-//     btn.onclick = function() {
-//         modal.style.display = "block";
-//     }
-
-//     close.onclick = function() {
-//         modal.style.display = "none";
-//     }
-// }
-// modal();
-
-// const wdiInstructors = [
-//     {name: 'A-aron', image: 'assets/a-aron.png'},
-//     {name: 'Drake', image: 'assets/drake.png'},
-//     {name: 'Jason', image: 'assets/jason.png'},
-//     {name: 'JohnM', image: 'assets/jm.png'},
-//     {name: 'JZ', image: 'assets/jz.png'},
-// ];
-
-// const eastTeams = [
-//     {name: 'Bucks', img: 'assets/bucks.png',},
-//     {name: 'Bulls', img: 'assets/bulls.png',},
-//     {name: 'Cavaliers', img: 'assets/cavaliers.png',},
-//     {name: 'Celtics', img: 'assets/celtics.png',},
-//     {name: 'Hawks', img: 'assets/hawks.png',},
-//     {name: 'Heat', img: 'assets/heat.png',},
-//     {name: 'Hornets', img: 'assets/hornets.png',},
-//     {name: 'Knicks', img: 'assets/knicks.png',},
-//     {name: 'Magic', img: 'assets/magic.png',},
-//     {name: 'Nets', img: 'assets/nets.png',},
-//     {name: 'Pacers', img: 'assets/pacers.png',},
-//     {name: 'Pistons', img: 'assets/pistons.png',},
-//     {name: 'Raptors', img: 'assets/raptors.png',},
-//     {name: 'Sixers', img: 'assets/sixers.png',},
-//     {name: 'Wizards', img: 'assets/wizards.png',},
-// ];
-
-// const westTeams = [
-//     {name: 'Blazers', img: 'assets/blazers.png',},
-//     {name: 'Clippers', img: 'assets/clippers.png',},
-//     {name: 'Grizzlies', img: 'assets/grizzlies.png',},
-//     {name: 'Jazz', img: 'assets/jazz.png',},
-//     {name: 'Kings', img: 'assets/kings.png',},
-//     {name: 'Lakers', img: 'assets/lakers.png',},
-//     {name: 'Mavericks', img: 'assets/mavericks.png',},
-//     {name: 'Nuggets', img: 'assets/nuggets.png',},
-//     {name: 'Pelicans', img: 'assets/pelicans.png',},
-//     {name: 'Rockets', img: 'assets/rockets.png',},
-//     {name: 'Spurs', img: 'assets/spurs.png',},
-//     {name: 'Suns', img: 'assets/suns.png',},
-//     {name: 'Thunder', img: 'assets/Thunder.png',},
-//     {name: 'Timberwolves', img: 'assets/timberwolves.png',},
-//     {name: 'Warriors', img: 'assets/warriors.png',},
-// ];
-
 //array of memes
 const memes = [
     {name: 'kim', image: 'assets/kimye.png', type: 'kimye'},
@@ -81,12 +22,117 @@ const memes = [
     {name: 'life', image: 'assets/life.jpg', type: 'coding'},
 ];
 
-//select container and card
+
+function gameTitle() {
+    //create game title
+    const divTitle = document.querySelector('#title');
+    const title = document.createElement("p");
+    title.classList.add('gameTitle');
+    title.innerHTML = `Test &lambda;our Memery!`;
+    divTitle.appendChild(title);
+}
+gameTitle();
+
+function gameMessage() {
+    const divMessage = document.querySelector('#message');
+    const message = document.createElement("ul");
+    message.classList.add('gameMessage');
+    message.innerHTML = `<li style="color:royalblue; font-size:22pt;">Memery Hints:</li>
+                            <li>Kimye</li>
+                            <li>Dr. Phil Of Shit</li>
+                            <li>BaCardi</li>
+                            <li>Peanut Butter Jelly Time!</li>
+                            <li>The Era of Dope & Grope</li>
+                            <li>Caffeine & Code</li>
+                            <li>Trump's fantasy</li>
+                            <li>Children's Favorite Snack</li>
+                            <li>Kim Jung Un's Hair Idol</li>
+                            <li>Programmer's Dilemma</li>`;
+    divMessage.appendChild(message);
+}
+gameMessage();
+
+function startScreen() {
+    const startMessage = document.createElement("div");
+    startMessage.classList.add('startScreen');
+    startMessage.innerHTML = `<div class="startScreenContent">
+                                <h1 class="modalText" style="font-family:'Wendy One',sans-serif;">Test λour Memery!</h1>
+                                <p class="modalText" style="font-size:22pt;">A simple and challenging memory matching game!</p>
+                                <p class="modalText" style="font-size:22pt;">Objective: Click each tile to reveal its content.</p>
+                                <p class="modalText" style="font-size:22pt;">Each tile is unique, but there's a matching association per two photos.</p>
+                                <p class="modalText" style="font-size:22pt;">(Check the hints on the left!)</p>
+                                <button id="hideModal">Play Now</button>
+                                </div>`
+    grid.appendChild(startMessage);
+    document.querySelector('.startScreen').style.display = 'block';
+    
+    startMessage.addEventListener('click', (e) => {
+        startMessage.style.display = 'none';
+        gameTimer();
+    });
+}
+
+function loseScreen() {
+    const loseMessage = document.createElement("div");
+    loseMessage.classList.add('loseScreen');
+    loseMessage.innerHTML = `<div class="loseScreenContent">
+                                <h1 class="loseModalText" style="font-family:'Wendy One',sans-serif;">Timer Has Expired</h1>
+                                <p class="loseModalText" style="font-size:22pt;">Try Again?</p>
+                                <button id="hideLoseModal">New Game</button>
+                                </div>`
+    grid.appendChild(loseMessage);
+    document.querySelector('.loseScreen').style.display = 'block';
+    
+    loseMessage.addEventListener('click', (e) => {
+        loseMessage.style.display = 'none';
+        location.reload();
+    });
+}
+
+function winScreen() {
+    const winMessage = document.createElement("div");
+    winMessage.classList.add('winScreen');
+    winMessage.innerHTML = `<div class="winScreenContent">
+                                <h1 class="winModalText" style="font-family:'Wendy One',sans-serif;">WINNER WINNER CHICKEN DINNER</h1>
+                                <p class="winModalText" style="font-size:22pt;">Try Again?</p>
+                                <button id="hideWinModal">New Game</button>
+                                </div>`
+    grid.appendChild(winMessage);
+    document.querySelector('.winScreen').style.display = 'block';
+    
+    winMessage.addEventListener('click', (e) => {
+        winMessage.style.display = 'none';
+        location.reload();
+    });
+
+}
+
+function gameTimer() {
+    const divTimer = document.querySelector('#timer');
+    const timer = document.createElement("h1");
+    timer.classList.add('gameTimer');
+    timer.innerHTML = `0:45`;
+    divTimer.appendChild(timer);
+
+    let timeLeft = 45;
+    let gameTime = document.querySelector('.gameTimer');
+    let countDown = setInterval(counting, 1000);
+    
+    function counting() {
+        if (timeLeft === 0 && keepCount !== 10 && all.length !== 20) {
+            clearInterval(countDown);
+            loseScreen();
+        }
+        else {
+            timeLeft -= 1;
+            gameTime.innerHTML = "0:" + timeLeft;
+        }
+    }
+}
+
+//selectors
 const grid = document.querySelector("#gameGrid");
-grid.classList.add('grid');
-const tile = document.querySelector(".card");
-const images = document.querySelectorAll("img");
-const allTiles = document.querySelectorAll(".card");
+const all = document.querySelectorAll('.matched');
 
 //reset moves
 let firstClick = "null";
@@ -118,6 +164,7 @@ function startGame() {
         });
         grid.appendChild(tiles);
     }
+    setTimeout(startScreen, 1500);
 }
 startGame();
 
@@ -158,8 +205,9 @@ function checkMatch(a, b) {
     let match = false;
     if (a.dataset.name === b.dataset.name) {
         match = true;
-        console.log(match);
-        setTimeout(proceed, 1500);
+        keepCount += 1;
+        console.log(match + keepCount);
+        setTimeout(proceed, 1000);
         function proceed() {
             checkClicks = [];
             a.classList.add('matched');
@@ -169,7 +217,7 @@ function checkMatch(a, b) {
     }
     else {
         console.log(match);
-        setTimeout(flipBack, 1500);
+        setTimeout(flipBack, 1000);
         function flipBack() {
             a.classList.remove('show');
             a.classList.add('hide');
@@ -181,9 +229,14 @@ function checkMatch(a, b) {
 }
 
 function checkWin() {
-    const all = document.querySelectorAll('.matched');
-    if (all.length === 20) {
-        console.log('Winner!');
+    let result = false;
+    if (keepCount === 10 || all.length === 20) {
+        console.log('Winner Winner Chicken Dinner!');
+        result = true;
+        return result;
+        winScreen();
     }
-    
+    else {
+        return result;
+    }
 }
