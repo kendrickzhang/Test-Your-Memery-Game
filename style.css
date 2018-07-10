@@ -131,17 +131,17 @@ img.imgOff {
 }
 
 .matched {
-    animation: match 1.2s linear 0.5s forwards;
+    /* animation: match 1.2s linear 0.5s forwards; */
     opacity: 1;
 }
-@keyframes match {
+/* @keyframes match {
     from {
         transform: rotateX(0deg);
     }
     to{
         transform: rotateX(360deg);
     }
-}
+} */
 
 
 /* Start Screen Modals */

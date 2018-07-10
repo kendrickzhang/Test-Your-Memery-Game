@@ -1,9 +1,10 @@
-# Working-Memory-Game
+# Test λour Memery! Game
 
-A simple photo matching memory game. The objective is to click through a series of cards to reveal matching item pairs. Find all the pairs before the timer hits zero. Enjoy!
+A simple photo matching memory game. The objective is to click through a series of tiles to reveal matching item pairs. Find all the pairs before the timer hits zero. Enjoy!
 
 
 --
 Created by Kendrick Zhang.
 
-WDI Unit-1 Project
+General Assembly Student
+WDI Unit One Project
